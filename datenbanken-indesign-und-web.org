@@ -1,0 +1,49 @@
+
+
+* Das Problem
+
+  * Es geht um die Trennung von Daten und Darstellung (Daten -> Print oder Web [als Diagramm Darstellen])
+  * Frage nach den Daten und deren Struktur/Format (als Tabelle oder als Aktenschrank)
+
+#+BEGIN_NOTES
+Enter speaker notes here.
+#+END_NOTES
+* Eine Form für die Daten
+(finden), die Anbindbarkeit an verschiedene Darstellungsformen gewährleistet (die Lösung mit EC-Lite lässt nur entweder eine web oder eine printkonforme lösung zu)
+** MySQL
+
+ - *Form* der Daten in SQL: Tabelle
+   - (-> statisches Schema, da die Tabelle nicht beliebig erweiterbar ist: Sie wird vor dem eintragen der weitern Daten "gezeichnet")
+ -
+** NoSQL: CouchDb
+
+ - *Form* der Daten in NoSQL: Aktenschrank-Metapher
+ - Ein Dokument verhält sich wie ein Blatt Papier/eine Akte, auf welches immer weiter (strukturierte) Daten geschrieben werden können/neue Unterlagen angeheftet werden können.
+
+*** Warum CouchDB?
+
+ + Schnittstelle: HTTP-Standart (für den Datenaustausch) und *JSON* (für das Format der ausgetauschten Daten)
+ + reduziert den Stack (um die Webserver-Komponente)
+ + mit PouchDB wird der Stack zudem um die komplette Backendkomponente reduziert
+ + loggendes Dateisystem (-> zur Lösung des Datenkonsistenz-Problems)
+ + dezentrale verteilung der Daten (in verbindung mit dem vorherigen punkt verhält sich couchdb also  wie ein dezentrales Versionskontrollsystem) -> GIT für Dokumente/Daten
+#+REVEAL: split
+ + alles solide  webstandarts: http, json, javascript (also nichts, wofür sich nicht jemand finden ließe, um das system zu erweitern; backbone ein solides mvc-framework fürs frontend)
+ + Hardcoding der Datenbankdokumente ist - im Zweifelsfall - sehr einfach (man muss bloß die JSON-Notation beherrschen) => d.h. die Datenbank lässt sich auch dann noch einfach bedienen, wenn die GUI wegfällt (was bei mysql sehr umständlich ist)
+ + der ideale Anwendungsfall für das Konzept hinter CouchDB liegt hier eigentlich vor!
+ + alles freie Software!
+
+* Option 1: Die Plugin-Lösung
+
+
+* Option 2: Die XML-Lösung
+
+hdjfhkdafnbmdfndf
+adfldfjlkdfjlfdjdkfljldfjlkfjljfkjflfj
+adfsldfsdflkdf
+
+
+djsfdfjkf
+asdasdasd
+
+* asdasd

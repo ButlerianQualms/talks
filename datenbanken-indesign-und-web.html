@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>datenbanken-indesign-und-web</title>
+<meta name="author" content="(cb)"/>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/reveal.min.css"/>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/theme/default.css" id="theme"/>
+
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/print/pdf.css" type="text/css" media="print"/>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<h1>datenbanken-indesign-und-web</h1>
+<h2>cb</h2>
+<h2><a href="mailto:cb@deus">cb@deus</a></h2>
+<h2></h2></section>
+<section>
+<h2>Table of Contents</h2><ul>
+<li>
+<a href="#sec-1">Grundprinzipien</a>
+</li>
+<li>
+<a href="#sec-2">Eine Form für die Daten</a>
+<ul>
+<li>
+<a href="#sec-2-1">MySQL</a>
+</li>
+<li>
+<a href="#sec-2-2">NoSQL: CouchDb</a>
+<ul>
+<li>
+<a href="#sec-2-2-1">Warum CouchDB?</a>
+</li>
+</ul>
+<li>
+<a href="#sec-3">Option 1: Die Plugin-Lösung</a>
+</li>
+<li>
+<a href="#sec-4">Option 2: Die XML-Lösung</a>
+</li>
+<li>
+<a href="#sec-5">asdasd</a>
+</li>
+</ul>
+</section>
+<section>
+<section id="sec-1" >
+
+<h2><span class="section-number-2">1</span> Grundprinzipien</h2>
+<ul class="org-ul">
+<li>Es geht um die Trennung von Daten und Darstellung (Daten -&gt; Print oder Web [als Diagramm Darstellen])
+</li>
+<li>Meine Aufgabe hat nun darin bestanden, mich in Hinsicht auf die erste Seite schlau zu machen
+</li>
+<li>Insbesondere geht es hier also vor allem um die Frage nach der Datenstruktur/Formatierung (als Tabellen oder als Aktenschrank)
+</li>
+<li><a href="http://google.com">Google</a>
+</li>
+</ul>
+
+
+<aside class="notes">
+<p>
+Enter speaker notes here.
+</p>
+</aside>
+</section>
+</section>
+<section>
+<section id="sec-2" >
+
+<h2><span class="section-number-2">2</span> Eine Form für die Daten</h2>
+<p>
+(finden), die Anbindbarkeit an verschiedene Darstellungsformen gewährleistet (die Lösung mit EC-Lite lässt nur entweder eine web oder eine printkonforme lösung zu)
+</p>
+</section>
+<section id="sec-2-1" >
+
+<h3><span class="section-number-3">2.1</span> MySQL</h3>
+<ul class="org-ul">
+<li><b>Form</b> der Daten in SQL: Tabelle
+<ul class="org-ul">
+<li>(-&gt; statisches Schema, da die Tabelle nicht beliebig erweiterbar ist: Sie wird vor dem eintragen der weitern Daten "gezeichnet")
+</li>
+</ul>
+</li>
+<li></li>
+</ul>
+
+</section>
+<section id="sec-2-2" >
+
+<h3><span class="section-number-3">2.2</span> NoSQL: CouchDb</h3>
+<ul class="org-ul">
+<li><b>Form</b> der Daten in NoSQL: Aktenschrank-Metapher
+</li>
+<li>Ein Dokument verhält sich wie ein Blatt Papier/eine Akte, auf welches immer weiter (strukturierte) Daten geschrieben werden können/neue Unterlagen angeheftet werden können.
+</li>
+</ul>
+
+</section>
+<section id="sec-2-2-1" >
+
+<h4><span class="section-number-4">2.2.1</span> Warum CouchDB?</h4>
+<ul class="org-ul">
+<li>Schnittstelle: HTTP-Standart (für den Datenaustausch) und <b>JSON</b> (für das Format der ausgetauschten Daten)
+</li>
+<li>reduziert den Stack (um die Webserver-Komponente)
+</li>
+<li>mit PouchDB wird der Stack zudem um die komplette Backendkomponente reduziert
+</li>
+<li>loggendes Dateisystem (-&gt; zur Lösung des Datenkonsistenz-Problems)
+</li>
+<li>dezentrale verteilung der Daten (in verbindung mit dem vorherigen punkt verhält sich couchdb also  wie ein dezentrales Versionskontrollsystem) -&gt; GIT für Dokumente/Daten
+</li>
+</ul>
+</section>
+<section>
+<ul class="org-ul">
+<li>alles solide  webstandarts: http, json, javascript (also nichts, wofür sich nicht jemand finden ließe, um das system zu erweitern; backbone ein solides mvc-framework fürs frontend)
+</li>
+<li>Hardcoding der Datenbankdokumente ist - im Zweifelsfall - sehr einfach (man muss bloß die JSON-Notation beherrschen) =&gt; d.h. die Datenbank lässt sich auch dann noch einfach bedienen, wenn die GUI wegfällt (was bei mysql sehr umständlich ist)
+</li>
+<li>der ideale Anwendungsfall für das Konzept hinter CouchDB liegt hier eigentlich vor!
+</li>
+<li>alles freie Software!
+</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="sec-3" >
+
+<h2><span class="section-number-2">3</span> Option 1: Die Plugin-Lösung</h2>
+</section>
+
+
+</section>
+<section>
+<section id="sec-4" >
+
+<h2><span class="section-number-2">4</span> Option 2: Die XML-Lösung</h2>
+<p>
+hdjfhkdafnbmdfndf
+adfldfjlkdfjlfdjdkfljldfjlkfjljfkjflfj
+adfsldfsdflkdf
+</p>
+
+
+<p>
+djsfdfjkf
+asdasdasd
+</p>
+</section>
+</section>
+<section>
+<section id="sec-5" >
+
+<h2><span class="section-number-2">5</span> asdasd</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="http://cdn.jsdelivr.net/reveal.js/2.5.0/lib/js/head.min.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/2.5.0/js/reveal.min.js"></script>
+<script>
+
+        		// Full list of configuration options available here:
+        		// https://github.com/hakimel/reveal.js#configuration
+        		Reveal.initialize({
+        			controls: true,
+        			progress: true,
+        			history: false,
+        			center: true,
+        			rollingLinks: false,
+        			keyboard: true,
+        			overview: true,
+        			 // slide width
+        			 // slide height
+        			 // slide margin
+        			 // slide minimum scaling factor
+        			 // slide maximum scaling factor
+
+
+        			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        			transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        			transitionSpeed: 'default',
+
+        			// Optional libraries used to extend on reveal.js
+        			dependencies: [
+        				{ src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } }
+        				,{ src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        				,{ src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        				,{ src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        				,{ src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }
+        				,{ src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        				// { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+        				// { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        			]
+        		});
+</script>
+</body>
+</html>
