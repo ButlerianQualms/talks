@@ -1,49 +1,141 @@
 
 
-* Das Problem
+* Aufgabe
 
-  * Es geht um die Trennung von Daten und Darstellung (Daten -> Print oder Web [als Diagramm Darstellen])
-  * Frage nach den Daten und deren Struktur/Format (als Tabelle oder als Aktenschrank)
+  * Es sollen die Daten von ihrer Darstellung getrennt werden
+    - ein und die selben Daten sollen im Web und im Prinkatalog dargestellt werden
+  * zentral ist daher die * Frage nach den Daten* und deren Struktur bzw. deren Format (als Tabelle oder als Aktenschrank)
 
 #+BEGIN_NOTES
-Enter speaker notes here.
+
 #+END_NOTES
+
+
 * Eine Form für die Daten
 (finden), die Anbindbarkeit an verschiedene Darstellungsformen gewährleistet (die Lösung mit EC-Lite lässt nur entweder eine web oder eine printkonforme lösung zu)
+
+
 ** MySQL
 
- - *Form* der Daten in SQL: Tabelle
-   - (-> statisches Schema, da die Tabelle nicht beliebig erweiterbar ist: Sie wird vor dem eintragen der weitern Daten "gezeichnet")
- -
+*** *Form* der Daten in SQL: *Tabelle*
+   - die Tabelle wird vor dem Eintragen der Daten "gezeichnet"
+     - statisches Schema: die Attribute stehen mit den vorgezeichneten Tabellenspalten fest
+   - SQL ist für das Abfrage von Datenstrukturen (d.h von Verknüpfungen zwischen den Spalten) aus einem Datensatz entworfen worden
+   - *Stärke* dieser Form: Tabellen lassen sich schnell verarbeiten
+   - je nach Anwendungsfall ist auch das Format einleuchten (bspw. Literaturverzeichnis)
+
+*** *Problem*: die Tabelle ist nicht beliebig erweiterbar (statisches Schema)
+   - Lösung: Simulation von Erweiterbarkeit über die Verwendung mehrerer Tabellen
+   - einem Eintrag in der Produkte-Tabelle können über einen ihn identifizierenden Key (Produkt-Nr) Einträge aus einer anderen Tabelle zugeordnet werden
+     - da eine Tabelle unendlich viele Einträge speichern kann, kann dem Eintrag in der Produkt-Tabelle so eine unendliche Anzahl weitere Attribute zugeordnet werden
+     - ggf. _Folgeproblem_: der Datensatz wird unübersichtlich
+
+*** Eingabe
+    - Über die Standart-Eingabemaske der Datenbank in die Tabellen der Datenbank
+    - Über ein Webinterface (in dem die Tabellen-Form "versteckt" werden kann)
+    - Eingabe über Windows ODBC-Treiber (*Indesign-Plugin*)
+
 ** NoSQL: CouchDb
 
- - *Form* der Daten in NoSQL: Aktenschrank-Metapher
- - Ein Dokument verhält sich wie ein Blatt Papier/eine Akte, auf welches immer weiter (strukturierte) Daten geschrieben werden können/neue Unterlagen angeheftet werden können.
+*** *Form* der Daten in NoSQL: *Akte*
+ - In einem Akteneintrag lassen sich beliebig strukturierte Daten speichern (eine Akte kann eine Akte enthalten)
+   - dynamisches Register: Eine Akte lässt sich jederzeit um einen weiteren Akteneintrag erweitern
+ - NoSQL-Datenbanken werden vor allem in neueren Webanwendungen eingesetzt
+   - Ziel ist eine einfache Erweiterung und Komposition von *Listen* (Benutzer,Foreneinträge,"Akten")
+   - *Stärke* dieser Form ist die dynamische Erweiterbarkeit und die Nähe zum Objektmodell von Skriptsprachen (insbesondere der Browsersprache Javascript)
 
-*** Warum CouchDB?
+*** Problem: ein Register kann unübersichtlich werden
 
- + Schnittstelle: HTTP-Standart (für den Datenaustausch) und *JSON* (für das Format der ausgetauschten Daten)
- + reduziert den Stack (um die Webserver-Komponente)
- + mit PouchDB wird der Stack zudem um die komplette Backendkomponente reduziert
- + loggendes Dateisystem (-> zur Lösung des Datenkonsistenz-Problems)
- + dezentrale verteilung der Daten (in verbindung mit dem vorherigen punkt verhält sich couchdb also  wie ein dezentrales Versionskontrollsystem) -> GIT für Dokumente/Daten
+ - der Einsatz von Such- und Sortierfunktionen wird essentiell
+  - _Folgeproblem_: Es braucht mehr Software, um den Content zu managen
+
+*** Eingabe
+
+ - Über die Standart-Eingabemaske der Datenbank in die Register-Liste der Datenbank
+ - Über ein Webinterface (mit Such- und Sortieroptionen)
+
+
+* Option 1: Die XML-Lösung
+
+** kurz skizziert
+
+ Browser-Frontend (Backbone.js) -> CouchDB -> XML-Parser -> Dateisystem -> Indesign
+
+
+** Warum CouchDB?
+
+ + Schnittstelle: *HTTP*-Standart (für den Datenaustausch) und *JSON* (für das Format der ausgetauschten Daten)
+  -JSON: Abgeleitet aus Javascript, der Sprache der Browseranwendungen
+ + CouchDB bringt seinen eigenen Webserver für die Bereitstellung eines Browser-Frontends mit (ein Service weniger zu warten)
+ + alles solide Webstandarts: http, json, javascript
+   - viele sind in diesen Standarts ausgebildet
+ + bei kleinen Katalogen ist Hardcoding der Datenbankdokumente - im Zweifelsfall - sehr einfach (man muss bloß die einfache JSON-Notation beherrschen)
+   - d.h. die Datenbank lässt sich auch dann noch einfach bedienen, wenn die GUI wegfallen sollte (was bei MySQL-Tabellensammlung sehr umständlich ist)
 #+REVEAL: split
- + alles solide  webstandarts: http, json, javascript (also nichts, wofür sich nicht jemand finden ließe, um das system zu erweitern; backbone ein solides mvc-framework fürs frontend)
- + Hardcoding der Datenbankdokumente ist - im Zweifelsfall - sehr einfach (man muss bloß die JSON-Notation beherrschen) => d.h. die Datenbank lässt sich auch dann noch einfach bedienen, wenn die GUI wegfällt (was bei mysql sehr umständlich ist)
- + der ideale Anwendungsfall für das Konzept hinter CouchDB liegt hier eigentlich vor!
+
+ + dezentrale Verteilung der Daten
+  - *Dateikonsistenz-Problem*
+ + *Lösung*: loggendes Dateisystem
+   + in Verbindung mit dem vorherigen Punkt verhält sich couchDB wie ein dezentrales Versionskontrollsystem -> GIT für Dokumente/Daten
+   + CouchDB-Entwickler war in Entwicklung der Lotus Notes Datenbank eingebunden
+ + mit PouchDB kann der Entwicklungs-Stack um die komplette Backend-Komponente reduziert werden
+   + zu Pflegen ist dann nurnoch ein Frontend (HTML, CSS, Javascript, Jquery, backbone.js, node.js)
  + alles freie Software!
 
-* Option 1: Die Plugin-Lösung
+** Vergleich
+
+*** Anwendungs-Schwerpunkt
+
+*** Ansatz
+
+*** Automatisierungsgrad
+
+*** Erweiterbarkeit
+
+*** Web-Ready
+
+*** Zukunftssicherheit
+
+*** Betreuungsaufwand
+
+*** Offline-Nutzbarkeit
 
 
-* Option 2: Die XML-Lösung
-
-hdjfhkdafnbmdfndf
-adfldfjlkdfjlfdjdkfljldfjlkfjljfkjflfj
-adfsldfsdflkdf
 
 
-djsfdfjkf
-asdasdasd
+* Option 2: Die Plugin-Lösung
 
-* asdasd
+** kurz skizziert
+
+Indesign-Plugin oder Browser-Frontend -> MySQL -> Indesign
+
+** Warum Easy Catalog und MySQL
+
+ - Das einzige einigermaßen ausgearbeitet Plugin
+ - wird regelmäßig aktualisiert
+ - Plugin mit der größten Verbreitung
+ - bietet alle nötigen Funktionen, um eine web-gerechte Datenbank aufzubauen
+   - vorausgesetzt, man ist bereit in das volle Paket zu investieren
+#+REVEAL: split
+ - MySQL ist eine freie und kostenlos zu beziehende Datenbank
+ - SQL ist seit jahrzenten in Gebrauch
+ - auf Basis von PHP oder Ruby existieren bereits viele Adapter und Skripts zum Umgang mit MySQL
+
+
+** Vergleich
+
+*** Anwendungs-Schwerpunkt
+
+*** Ansatz
+
+*** Automatisierungsgrad
+
+*** Erweiterbarkeit
+
+*** Web-Ready
+
+*** Zukunftssicherheit
+
+*** Betreuungsaufwand
+
+*** Offline-Nutzbarkeit
