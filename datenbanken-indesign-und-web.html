@@ -16,7 +16,7 @@
 <section>
 <h1>datenbanken-indesign-und-web</h1>
 <h2>cb</h2>
-
+<h2><a href="mailto:cb@deus">cb@deus</a></h2>
 <h2></h2></section>
 <section>
 <h2>Table of Contents</h2><ul>
@@ -36,7 +36,7 @@
 <a href="#sec-2-1-2"><b>Problem</b>: die Tabelle ist nicht beliebig erweiterbar (statisches Schema)</a>
 </li>
 <li>
-<a href="#sec-2-1-3">Eingabe</a>
+<a href="#sec-2-1-3"><b>Eingabe</b> der Daten</a>
 </li>
 </ul>
 <li>
@@ -46,10 +46,10 @@
 <a href="#sec-2-2-1"><b>Form</b> der Daten in NoSQL: <b>Akte</b></a>
 </li>
 <li>
-<a href="#sec-2-2-2">Problem: ein Register kann unübersichtlich werden</a>
+<a href="#sec-2-2-2"><b>Problem</b>: ein Register kann unübersichtlich werden</a>
 </li>
 <li>
-<a href="#sec-2-2-3">Eingabe</a>
+<a href="#sec-2-2-3"><b>Eingabe</b> der Daten</a>
 </li>
 </ul>
 <li>
@@ -65,19 +65,19 @@
 <a href="#sec-3-3">Vergleich</a>
 <ul>
 <li>
-<a href="#sec-3-3-1">Anwendungs-Schwerpunkt</a>
+<a href="#sec-3-3-1">Ansatz</a>
 </li>
 <li>
-<a href="#sec-3-3-2">Ansatz</a>
+<a href="#sec-3-3-2">Automatisierungsgrad</a>
 </li>
 <li>
-<a href="#sec-3-3-3">Automatisierungsgrad</a>
+<a href="#sec-3-3-3">Erweiterbarkeit</a>
 </li>
 <li>
-<a href="#sec-3-3-4">Erweiterbarkeit</a>
+<a href="#sec-3-3-4">Web-Anbindung</a>
 </li>
 <li>
-<a href="#sec-3-3-5">Web-Ready</a>
+<a href="#sec-3-3-5">Indesign-Anbindung</a>
 </li>
 <li>
 <a href="#sec-3-3-6">Zukunftssicherheit</a>
@@ -87,6 +87,9 @@
 </li>
 <li>
 <a href="#sec-3-3-8">Offline-Nutzbarkeit</a>
+</li>
+<li>
+<a href="#sec-3-3-9">Kosten</a>
 </li>
 </ul>
 <li>
@@ -102,28 +105,28 @@
 <a href="#sec-4-3">Vergleich</a>
 <ul>
 <li>
-<a href="#sec-4-3-1">Anwendungs-Schwerpunkt</a>
+<a href="#sec-4-3-1">Ansatz</a>
 </li>
 <li>
-<a href="#sec-4-3-2">Ansatz</a>
+<a href="#sec-4-3-2">Automatisierungsgrad</a>
 </li>
 <li>
-<a href="#sec-4-3-3">Automatisierungsgrad</a>
+<a href="#sec-4-3-3">Erweiterbarkeit</a>
 </li>
 <li>
-<a href="#sec-4-3-4">Erweiterbarkeit</a>
+<a href="#sec-4-3-4">Web-Anbindung</a>
 </li>
 <li>
-<a href="#sec-4-3-5">Web-Ready</a>
+<a href="#sec-4-3-5">Zukunftssicherheit</a>
 </li>
 <li>
-<a href="#sec-4-3-6">Zukunftssicherheit</a>
+<a href="#sec-4-3-6">Betreuungsaufwand</a>
 </li>
 <li>
-<a href="#sec-4-3-7">Betreuungsaufwand</a>
+<a href="#sec-4-3-7">Offline-Nutzbarkeit</a>
 </li>
 <li>
-<a href="#sec-4-3-8">Offline-Nutzbarkeit</a>
+<a href="#sec-4-3-8">Kosten</a>
 </li>
 </ul>
 </section>
@@ -138,7 +141,7 @@
 </li>
 </ul>
 </li>
-<li>zentral ist daher die * Frage nach den Daten* und deren Struktur bzw. deren Format (als Tabelle oder als Aktenschrank)
+<li>zentral ist daher die <b>Frage nach den Daten</b> und deren Struktur bzw. deren Format (als Tabelle oder als Aktenschrank)
 </li>
 </ul>
 
@@ -152,7 +155,7 @@
 
 <h2><span class="section-number-2">2</span> Eine Form für die Daten</h2>
 <p>
-(finden), die Anbindbarkeit an verschiedene Darstellungsformen gewährleistet (die Lösung mit EC-Lite lässt nur entweder eine web oder eine printkonforme lösung zu)
+(finden), die Anbindbarkeit an verschiedene Darstellungsformen gewährleistet
 </p>
 
 
@@ -171,11 +174,15 @@
 </li>
 </ul>
 </li>
-<li>SQL ist für das Abfrage von Datenstrukturen (d.h von Verknüpfungen zwischen den Spalten) aus einem Datensatz entworfen worden
+<li>Abfragesprache: SQL
+<ul class="org-ul">
+<li>für das Abfragen von <b>Datenstrukturen</b> (d.h. von Verknüpfungen zwischen den Spalten) aus einem Datensatz (einer Menge von Tabellen) entworfen worden
+</li>
+</ul>
 </li>
 <li><b>Stärke</b> dieser Form: Tabellen lassen sich schnell verarbeiten
 </li>
-<li>je nach Anwendungsfall ist auch das Format einleuchten (bspw. Literaturverzeichnis)
+<li>je nach Anwendungsfall ist auch das Format einleuchtend (bspw. Literaturverzeichnis)
 </li>
 </ul>
 </section>
@@ -183,7 +190,7 @@
 
 <h4><span class="section-number-4">2.1.2</span> <b>Problem</b>: die Tabelle ist nicht beliebig erweiterbar (statisches Schema)</h4>
 <ul class="org-ul">
-<li>Lösung: Simulation von Erweiterbarkeit über die Verwendung mehrerer Tabellen
+<li><b>Lösung</b>: Simulation von Erweiterbarkeit über die Verwendung mehrerer Tabellen
 </li>
 <li>einem Eintrag in der Produkte-Tabelle können über einen ihn identifizierenden Key (Produkt-Nr) Einträge aus einer anderen Tabelle zugeordnet werden
 <ul class="org-ul">
@@ -197,9 +204,9 @@
 </section>
 <section id="sec-2-1-3" >
 
-<h4><span class="section-number-4">2.1.3</span> Eingabe</h4>
+<h4><span class="section-number-4">2.1.3</span> <b>Eingabe</b> der Daten</h4>
 <ul class="org-ul">
-<li>Über die Standart-Eingabemaske der Datenbank in die Tabellen der Datenbank
+<li>Über die Standard-Eingabemaske der Datenbank in die Tabellen der Datenbank
 </li>
 <li>Über ein Webinterface (in dem die Tabellen-Form "versteckt" werden kann)
 </li>
@@ -221,11 +228,13 @@
 </li>
 </ul>
 </li>
+<li>verschiedene Abfragesprachen
+</li>
 <li>NoSQL-Datenbanken werden vor allem in neueren Webanwendungen eingesetzt
 <ul class="org-ul">
 <li>Ziel ist eine einfache Erweiterung und Komposition von <b>Listen</b> (Benutzer,Foreneinträge,"Akten")
 </li>
-<li><b>Stärke</b> dieser Form ist die dynamische Erweiterbarkeit und die Nähe zum Objektmodell von Skriptsprachen (insbesondere der Browsersprache Javascript)
+<li><b>Stärke</b> dieser Form ist die dynamische Erweiterbarkeit und die Nähe zum Objektmodell moderner Skriptsprachen (insbesondere der Browsersprache Javascript)
 </li>
 </ul>
 </li>
@@ -233,9 +242,9 @@
 </section>
 <section id="sec-2-2-2" >
 
-<h4><span class="section-number-4">2.2.2</span> Problem: ein Register kann unübersichtlich werden</h4>
+<h4><span class="section-number-4">2.2.2</span> <b>Problem</b>: ein Register kann unübersichtlich werden</h4>
 <ul class="org-ul">
-<li>der Einsatz von Such- und Sortierfunktionen wird essentiell
+<li><b>Lösung</b>: Einsatz von Such- und Sortierfunktionen ist essentiell
 <ul class="org-ul">
 <li><span class="underline">Folgeproblem</span>: Es braucht mehr Software, um den Content zu managen
 </li>
@@ -245,9 +254,9 @@
 </section>
 <section id="sec-2-2-3" >
 
-<h4><span class="section-number-4">2.2.3</span> Eingabe</h4>
+<h4><span class="section-number-4">2.2.3</span> <b>Eingabe</b> der Daten</h4>
 <ul class="org-ul">
-<li>Über die Standart-Eingabemaske der Datenbank in die Register-Liste der Datenbank
+<li>Über die Standard-Eingabemaske der Datenbank in die Register-Liste der Datenbank
 </li>
 <li>Über ein Webinterface (mit Such- und Sortieroptionen)
 </li>
@@ -264,7 +273,7 @@
 
 <h3><span class="section-number-3">3.1</span> kurz skizziert</h3>
 <p>
-Browser-Frontend (Backbone.js) -&gt; CouchDB -&gt; XML-Parser -&gt; Dateisystem -&gt; Indesign
+Browser-Frontend (Backbone.js &amp; PouchDB) -&gt; CouchDB -&gt; XML-Parser -&gt; Dateisystem -&gt; Indesign
 </p>
 
 </section>
@@ -273,17 +282,18 @@ Browser-Frontend (Backbone.js) -&gt; CouchDB -&gt; XML-Parser -&gt; Dateisystem 
 <h3><span class="section-number-3">3.2</span> Warum CouchDB?</h3>
 <ul class="org-ul">
 <li>Schnittstelle: <b>HTTP</b>-Standart (für den Datenaustausch) und <b>JSON</b> (für das Format der ausgetauschten Daten)
--JSON: Abgeleitet aus Javascript, der Sprache der Browseranwendungen
-</li>
-<li>CouchDB bringt seinen eigenen Webserver für die Bereitstellung eines Browser-Frontends mit (ein Service weniger zu warten)
-</li>
-<li>alles solide Webstandarts: http, json, javascript
 <ul class="org-ul">
-<li>viele sind in diesen Standarts ausgebildet
+<li>JSON: Datenformat; Abgeleitet aus Javascript, der Sprache der Browseranwendungen
+</li>
+<li>Abfragesprache: <b>Javascript</b>
+</li>
+<li>alles solide Webstandarts (Bestandteil vieler Ausbildungscurricula)
 </li>
 </ul>
 </li>
-<li>bei kleinen Katalogen ist Hardcoding der Datenbankdokumente - im Zweifelsfall - sehr einfach (man muss bloß die einfache JSON-Notation beherrschen)
+<li>eigener Webserver für ein Browser-Frontends (ein Service weniger zu warten)
+</li>
+<li>bei kleinen Katalogen ist Hardcoding der Datenbankdokumente sehr einfach (man muss bloß die einfache JSON-Notation beherrschen)
 <ul class="org-ul">
 <li>d.h. die Datenbank lässt sich auch dann noch einfach bedienen, wenn die GUI wegfallen sollte (was bei MySQL-Tabellensammlung sehr umständlich ist)
 </li>
@@ -302,19 +312,24 @@ Browser-Frontend (Backbone.js) -&gt; CouchDB -&gt; XML-Parser -&gt; Dateisystem 
 </li>
 <li><b>Lösung</b>: loggendes Dateisystem
 <ul class="org-ul">
-<li>in Verbindung mit dem vorherigen Punkt verhält sich couchDB wie ein dezentrales Versionskontrollsystem -&gt; GIT für Dokumente/Daten
-</li>
-<li>CouchDB-Entwickler war in Entwicklung der Lotus Notes Datenbank eingebunden
-</li>
-</ul>
-</li>
-<li>mit PouchDB kann der Entwicklungs-Stack um die komplette Backend-Komponente reduziert werden
+<li>in Verbindung mit dem vorherigen Punkt verhält sich CouchDB wie
+ein dezentrales Versionskontrollsystem
 <ul class="org-ul">
-<li>zu Pflegen ist dann nurnoch ein Frontend (HTML, CSS, Javascript, Jquery, backbone.js, node.js)
+<li>GIT für Dokumente/Daten
 </li>
 </ul>
 </li>
-<li>alles freie Software!
+<li>Designziel Verlässlichkeit
+</li>
+</ul>
+</li>
+<li>mit P-ouchDB kann der Entwicklungs-Stack um die komplette Backend-Komponente reduziert werden
+<ul class="org-ul">
+<li>zu Pflegen ist dann nurnoch ein Frontend (HTML, CSS, Javascript, Jquery, backbone.js)
+</li>
+</ul>
+</li>
+<li>alles freie Software! (nicht nur gratis, sondern auch "frei" für Weiterentwicklung)
 </li>
 </ul>
 </section>
@@ -324,45 +339,127 @@ Browser-Frontend (Backbone.js) -&gt; CouchDB -&gt; XML-Parser -&gt; Dateisystem 
 </section>
 <section id="sec-3-3-1" >
 
-<h4><span class="section-number-4">3.3.1</span> Anwendungs-Schwerpunkt</h4>
-
+<h4><span class="section-number-4">3.3.1</span> Ansatz</h4>
+<ul class="org-ul">
+<li>modular und dokumentorientiert
+</li>
+<li>Datenstruktur = Layout
+<ul class="org-ul">
+<li>die Struktur des Layouts muss der Struktur der Daten möglichst nahe gebracht werden
+<ul class="org-ul">
+<li>die Daten können jedoch so angelegt werden, dass sie der Struktur des Layouts entsprechen
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="sec-3-3-2" >
 
-<h4><span class="section-number-4">3.3.2</span> Ansatz</h4>
-
+<h4><span class="section-number-4">3.3.2</span> Automatisierungsgrad</h4>
+<p>
+Die Datenstruktur und die Tag-Struktur in Indesign müssen übereinstimmen, dann können die Daten mit einem Klick im Layout aktualisiert werden
+<b>Inline-Formatierung</b> ist ggf. über Adobe-Tags möglich
+</p>
 </section>
 <section id="sec-3-3-3" >
 
-<h4><span class="section-number-4">3.3.3</span> Automatisierungsgrad</h4>
-
+<h4><span class="section-number-4">3.3.3</span> Erweiterbarkeit</h4>
+<ul class="org-ul">
+<li><b>der Daten</b> : CouchDB wurde in Hinsicht auf die beliebige Erweiterbarkeit der Dokumente entworfen
+</li>
+<li><b>der Infrastruktur</b> : Die eingesetzten Techniken und der modulare Ansatz gewähren eine einfache Weiterentwicklung des Content Management Systems
+</li>
+</ul>
 </section>
 <section id="sec-3-3-4" >
 
-<h4><span class="section-number-4">3.3.4</span> Erweiterbarkeit</h4>
-
+<h4><span class="section-number-4">3.3.4</span> Web-Anbindung</h4>
+<ul class="org-ul">
+<li>CouchDB ist auf die nächste Generation von Webanwendungen ausgelegt
+<ul class="org-ul">
+<li>"Web 3.0": Die Datenverarbeitung und -darstellung (Rendering von HTML usw.) verschiebt sich von der Server- auf die Clientenseite
+</li>
+</ul>
+</li>
+<li>CouchDB liefert die Daten direkt im JSON-Format und damit in der Sprache des Webs aus
+<ul class="org-ul">
+<li>es ist keine zusätzliche Übersetzungsschicht SQL -&gt; JSON nötig
+</li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="sec-3-3-5" >
 
-<h4><span class="section-number-4">3.3.5</span> Web-Ready</h4>
-
+<h4><span class="section-number-4">3.3.5</span> Indesign-Anbindung</h4>
+<ul class="org-ul">
+<li>Das JSON-Format kann einfach in XML übersetzt werden
+</li>
+<li>Indesign importiert die Daten über eine XML-Datei
+</li>
+</ul>
 </section>
 <section id="sec-3-3-6" >
 
 <h4><span class="section-number-4">3.3.6</span> Zukunftssicherheit</h4>
-
+<ul class="org-ul">
+<li><b>Print</b>: Auch künftige Indesign-Versionen werden den XML-Import unterstützen.
+<ul class="org-ul">
+<li>Adobe verwendet selbst XML, um die Kompatibilität zwischen den Indesign-Versionen herzustellen
+</li>
+</ul>
+</li>
+<li><b>Web</b>: Dank des JSON-Formats und der HTTP-API können <b>alle gängigen
+Frameworks</b> in <b>allen gängigen Skriptsprachen</b> verwendet werden
+<ul class="org-ul">
+<li>Zend (PHP), Rails (Ruby), Express (Javascript), Django (Python)
+</li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="sec-3-3-7" >
 
 <h4><span class="section-number-4">3.3.7</span> Betreuungsaufwand</h4>
-
+<ul class="org-ul">
+<li>Die Datenbank muss gelegentlich komprimiert werden
+<ul class="org-ul">
+<li>d.h. frühe Versionen der Dokumente werden gelöscht
+</li>
+<li>gelöschte Dokumente werden endgültig gelöscht
+</li>
+</ul>
+</li>
+<li>Die Eingabemaske muss ggf. angepasst werden
+</li>
+</ul>
 </section>
 <section id="sec-3-3-8" >
 
 <h4><span class="section-number-4">3.3.8</span> Offline-Nutzbarkeit</h4>
+<ul class="org-ul">
+<li>ist über die Replikations-Funktion von CouchDB gewährleistet
+<ul class="org-ul">
+<li>mit PouchDB lässt sich eine CouchDB im Browser abspeichern; die XML-Dateien können kopiert werden
+</li>
+</ul>
+</li>
+<li>die Datenbank kann daher mit dem Browser mit nach Hause genommen werden,
+</li>
+<li>der höchste  Automatisierungsgrad (automatisches Update der Dateien im Verzeichnispfad der XML-Dateien) ist jedoch nur am Arbeitsplatz bzw. im Firmennetz möglich
+</li>
+</ul>
 </section>
+<section id="sec-3-3-9" >
 
-
+<h4><span class="section-number-4">3.3.9</span> Kosten</h4>
+<ul class="org-ul">
+<li>Arbeitszeit. Die Software ist vollständig frei.
+</li>
+</ul>
+</section>
 
 </section>
 <section>
@@ -401,7 +498,7 @@ Indesign-Plugin oder Browser-Frontend -&gt; MySQL -&gt; Indesign
 </li>
 <li>SQL ist seit jahrzenten in Gebrauch
 </li>
-<li>auf Basis von PHP oder Ruby existieren bereits viele Adapter und Skripts zum Umgang mit MySQL
+<li>auf Basis der Skriptsprachen PHP oder Ruby existieren bereits solide Frameworks zum Umgang mit MySQL
 </li>
 </ul>
 
@@ -412,42 +509,126 @@ Indesign-Plugin oder Browser-Frontend -&gt; MySQL -&gt; Indesign
 </section>
 <section id="sec-4-3-1" >
 
-<h4><span class="section-number-4">4.3.1</span> Anwendungs-Schwerpunkt</h4>
-
+<h4><span class="section-number-4">4.3.1</span> Ansatz</h4>
+<ul class="org-ul">
+<li>integrativ und auf Relationen zwischen Tabellen orientiert
+<ul class="org-ul">
+<li>über EasyCatalog können Daten ins Layout eingebunden und zugleich gepflegt werden
+</li>
+<li>alles integriert in Indesign
+</li>
+</ul>
+</li>
+<li>Layout &gt; Daten
+<ul class="org-ul">
+<li>die Tabellen werden im Voraus so entworfen, dass mit ihnen möglichst alle erdenklichen Erfordernisse des Layouts abgedeckt sind
+</li>
+<li>Erweiterbarkeit erfordert die Verwendung mehrerer Tabellen. Insofern die Attribute eines Eintrags beliebig erweiterbar sein sollen, müssen mehrere Abfragen kombiniert werden.
+</li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="sec-4-3-2" >
 
-<h4><span class="section-number-4">4.3.2</span> Ansatz</h4>
-
+<h4><span class="section-number-4">4.3.2</span> Automatisierungsgrad</h4>
+<ul class="org-ul">
+<li>Mit dem "Paginationsmodul" lassen sich Tabellen im Indesign-Dokument automatisch erzeugen
+</li>
+<li>EasyCatalog bietet Inline-Formatierung
+<ul class="org-ul">
+<li>Nachteil: Die Daten werden mit den Formatierungstags abgespeichert (ideal ist jedoch eine vollständige Trennung von Daten und Datendarstellung)
+</li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="sec-4-3-3" >
 
-<h4><span class="section-number-4">4.3.3</span> Automatisierungsgrad</h4>
-
+<h4><span class="section-number-4">4.3.3</span> Erweiterbarkeit</h4>
+<ul class="org-ul">
+<li><b>möglich</b>: mit dem "relational modul" lassen sich mehrere Abfragen kombinieren und so eine Erweiterbarkeit bei einem im Prinzip statischen Schema simulieren
+<ul class="org-ul">
+<li>es gilt: Um so stärker zwischen Daten und Darstellung getrennt werden soll (und so eine gewisse Neutralität der Datenstruktur gegenüber ihrer Darstellung zu erreichen), um so teurer wird das Plugin-Paket
+</li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="sec-4-3-4" >
 
-<h4><span class="section-number-4">4.3.4</span> Erweiterbarkeit</h4>
-
+<h4><span class="section-number-4">4.3.4</span> Web-Anbindung</h4>
+<ul class="org-ul">
+<li>baut auf gängigen Webtechniken auf
+<ul class="org-ul">
+<li>PHP&amp;MySQL haben das sogenannte Web 2.0 ermöglicht: Webseiten ändern sich dynamisch mit der Datenbank, die sie zur Darstellung bringen (allein auf der Serverseite!)
+</li>
+<li>der Trend in der Webentwicklung geht jedoch in die Richtung, dass die Darstellung in immer größerem Maß auf der Clientenseite erzeugt wird und der Server lediglich JSON-Daten liefert
+</li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="sec-4-3-5" >
 
-<h4><span class="section-number-4">4.3.5</span> Web-Ready</h4>
-
+<h4><span class="section-number-4">4.3.5</span> Zukunftssicherheit</h4>
+<ul class="org-ul">
+<li><b>Print</b>: die weitere Verwendung hängt an dem Bestehen des Plugin-Herstellers
+<ul class="org-ul">
+<li>bei jedem Indesign-Update muss ein Update des Plugins geordert werden (dieses wird einige Wochen nach erscheinen der neuen CC-Version bereit gestellt)
+</li>
+</ul>
+</li>
+<li><b>Web</b>: es existieren in den Skriptsprachen PHP (Zend) und Ruby (Rails) solide Frameworks zum Betreiben von Seiten mit MySQL
+</li>
+</ul>
 </section>
 <section id="sec-4-3-6" >
 
-<h4><span class="section-number-4">4.3.6</span> Zukunftssicherheit</h4>
-
+<h4><span class="section-number-4">4.3.6</span> Betreuungsaufwand</h4>
+<ul class="org-ul">
+<li>Update des Plugins bei einem Update der CC
+</li>
+<li>Bei nachträglichen Erweiterungen der Datenbank:
+<ul class="org-ul">
+<li>das Schema muss ggf. per Hand erweitert werden (Administration des
+MySQL-Servers ist im Vergleich zu der von NoSQL-Datenbanken voraussetzungsreich; ist jedoch Bestandteil vieler Ausbildungscurricula)
+</li>
+<li>die Eingabemaske muss ggf. an Veränderungen angepasst werden
+</li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="sec-4-3-7" >
 
-<h4><span class="section-number-4">4.3.7</span> Betreuungsaufwand</h4>
-
+<h4><span class="section-number-4">4.3.7</span> Offline-Nutzbarkeit</h4>
+<ul class="org-ul">
+<li><b>Ja</b>: EasyCatalog cached die Datenabfragen in einem lokalen Ordner.
+</li>
+<li><b>und Nein</b>: Die Eingabe der Daten ist jedoch nur mit Verbindung zum MySQL-Server möglich.
+</li>
+</ul>
 </section>
 <section id="sec-4-3-8" >
 
-<h4><span class="section-number-4">4.3.8</span> Offline-Nutzbarkeit</h4>
+<h4><span class="section-number-4">4.3.8</span> Kosten</h4>
+<ul class="org-ul">
+<li>EC-Lite &amp; ODBC-Modul: $498/Lizenz
+<ul class="org-ul">
+<li>Nur eine Abfrage möglich -&gt; unübersichtliches und nicht auf Erweiterbarkeit ausgelegtes Schema
+</li>
+<li>die Lösung mit EC-Lite lässt nur <b>entweder</b> eine Web- <b>oder</b> eine printkonforme Lösung zu
+</li>
+</ul>
+</li>
+<li>EC &amp; ODBC-Modul &amp; relational Modul: $2095/Lizenz
+</li>
+<li>EC &amp; ODBC-Modul &amp; relational Modul &amp; Paginationsmodul: $2694
+</li>
+<li>Arbeitszeit (Entwurf der Datenbank ist bei SQL-Datenbanken aufwändiger als bei NoSQL; dafür fällt hier der XML-Export der Daten weg)
+</li>
+</ul>
 </section>
 </section>
 </div>

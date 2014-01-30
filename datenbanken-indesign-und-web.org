@@ -4,7 +4,7 @@
 
   * Es sollen die Daten von ihrer Darstellung getrennt werden
     - ein und die selben Daten sollen im Web und im Prinkatalog dargestellt werden
-  * zentral ist daher die * Frage nach den Daten* und deren Struktur bzw. deren Format (als Tabelle oder als Aktenschrank)
+  * zentral ist daher die *Frage nach den Daten* und deren Struktur bzw. deren Format (als Tabelle oder als Aktenschrank)
 
 #+BEGIN_NOTES
 
@@ -12,7 +12,7 @@
 
 
 * Eine Form für die Daten
-(finden), die Anbindbarkeit an verschiedene Darstellungsformen gewährleistet (die Lösung mit EC-Lite lässt nur entweder eine web oder eine printkonforme lösung zu)
+(finden), die Anbindbarkeit an verschiedene Darstellungsformen gewährleistet
 
 
 ** MySQL
@@ -20,18 +20,19 @@
 *** *Form* der Daten in SQL: *Tabelle*
    - die Tabelle wird vor dem Eintragen der Daten "gezeichnet"
      - statisches Schema: die Attribute stehen mit den vorgezeichneten Tabellenspalten fest
-   - SQL ist für das Abfrage von Datenstrukturen (d.h von Verknüpfungen zwischen den Spalten) aus einem Datensatz entworfen worden
+   - Abfragesprache: SQL
+     - für das Abfragen von *Datenstrukturen* (d.h. von Verknüpfungen zwischen den Spalten) aus einem Datensatz (einer Menge von Tabellen) entworfen worden
    - *Stärke* dieser Form: Tabellen lassen sich schnell verarbeiten
-   - je nach Anwendungsfall ist auch das Format einleuchten (bspw. Literaturverzeichnis)
+   - je nach Anwendungsfall ist auch das Format einleuchtend (bspw. Literaturverzeichnis)
 
 *** *Problem*: die Tabelle ist nicht beliebig erweiterbar (statisches Schema)
-   - Lösung: Simulation von Erweiterbarkeit über die Verwendung mehrerer Tabellen
+   - *Lösung*: Simulation von Erweiterbarkeit über die Verwendung mehrerer Tabellen
    - einem Eintrag in der Produkte-Tabelle können über einen ihn identifizierenden Key (Produkt-Nr) Einträge aus einer anderen Tabelle zugeordnet werden
      - da eine Tabelle unendlich viele Einträge speichern kann, kann dem Eintrag in der Produkt-Tabelle so eine unendliche Anzahl weitere Attribute zugeordnet werden
      - ggf. _Folgeproblem_: der Datensatz wird unübersichtlich
 
-*** Eingabe
-    - Über die Standart-Eingabemaske der Datenbank in die Tabellen der Datenbank
+*** *Eingabe* der Daten
+    - Über die Standard-Eingabemaske der Datenbank in die Tabellen der Datenbank
     - Über ein Webinterface (in dem die Tabellen-Form "versteckt" werden kann)
     - Eingabe über Windows ODBC-Treiber (*Indesign-Plugin*)
 
@@ -40,18 +41,19 @@
 *** *Form* der Daten in NoSQL: *Akte*
  - In einem Akteneintrag lassen sich beliebig strukturierte Daten speichern (eine Akte kann eine Akte enthalten)
    - dynamisches Register: Eine Akte lässt sich jederzeit um einen weiteren Akteneintrag erweitern
+ - verschiedene Abfragesprachen
  - NoSQL-Datenbanken werden vor allem in neueren Webanwendungen eingesetzt
    - Ziel ist eine einfache Erweiterung und Komposition von *Listen* (Benutzer,Foreneinträge,"Akten")
-   - *Stärke* dieser Form ist die dynamische Erweiterbarkeit und die Nähe zum Objektmodell von Skriptsprachen (insbesondere der Browsersprache Javascript)
+   - *Stärke* dieser Form ist die dynamische Erweiterbarkeit und die Nähe zum Objektmodell moderner Skriptsprachen (insbesondere der Browsersprache Javascript)
 
-*** Problem: ein Register kann unübersichtlich werden
+*** *Problem*: ein Register kann unübersichtlich werden
 
- - der Einsatz von Such- und Sortierfunktionen wird essentiell
+ - *Lösung*: Einsatz von Such- und Sortierfunktionen ist essentiell
   - _Folgeproblem_: Es braucht mehr Software, um den Content zu managen
 
-*** Eingabe
+*** *Eingabe* der Daten
 
- - Über die Standart-Eingabemaske der Datenbank in die Register-Liste der Datenbank
+ - Über die Standard-Eingabemaske der Datenbank in die Register-Liste der Datenbank
  - Über ein Webinterface (mit Such- und Sortieroptionen)
 
 
@@ -59,48 +61,87 @@
 
 ** kurz skizziert
 
- Browser-Frontend (Backbone.js) -> CouchDB -> XML-Parser -> Dateisystem -> Indesign
+ Browser-Frontend (Backbone.js & PouchDB) -> CouchDB -> XML-Parser -> Dateisystem -> Indesign
 
 
 ** Warum CouchDB?
 
  + Schnittstelle: *HTTP*-Standart (für den Datenaustausch) und *JSON* (für das Format der ausgetauschten Daten)
-  -JSON: Abgeleitet aus Javascript, der Sprache der Browseranwendungen
- + CouchDB bringt seinen eigenen Webserver für die Bereitstellung eines Browser-Frontends mit (ein Service weniger zu warten)
- + alles solide Webstandarts: http, json, javascript
-   - viele sind in diesen Standarts ausgebildet
- + bei kleinen Katalogen ist Hardcoding der Datenbankdokumente - im Zweifelsfall - sehr einfach (man muss bloß die einfache JSON-Notation beherrschen)
+  - JSON: Datenformat; Abgeleitet aus Javascript, der Sprache der Browseranwendungen
+  - Abfragesprache: *Javascript*
+  - alles solide Webstandarts (Bestandteil vieler Ausbildungscurricula)
+ + eigener Webserver für ein Browser-Frontends (ein Service weniger zu warten)
+ + bei kleinen Katalogen ist Hardcoding der Datenbankdokumente sehr einfach (man muss bloß die einfache JSON-Notation beherrschen)
    - d.h. die Datenbank lässt sich auch dann noch einfach bedienen, wenn die GUI wegfallen sollte (was bei MySQL-Tabellensammlung sehr umständlich ist)
 #+REVEAL: split
 
  + dezentrale Verteilung der Daten
   - *Dateikonsistenz-Problem*
  + *Lösung*: loggendes Dateisystem
-   + in Verbindung mit dem vorherigen Punkt verhält sich couchDB wie ein dezentrales Versionskontrollsystem -> GIT für Dokumente/Daten
-   + CouchDB-Entwickler war in Entwicklung der Lotus Notes Datenbank eingebunden
- + mit PouchDB kann der Entwicklungs-Stack um die komplette Backend-Komponente reduziert werden
-   + zu Pflegen ist dann nurnoch ein Frontend (HTML, CSS, Javascript, Jquery, backbone.js, node.js)
- + alles freie Software!
+   + in Verbindung mit dem vorherigen Punkt verhält sich CouchDB wie
+     ein dezentrales Versionskontrollsystem
+     - GIT für Dokumente/Daten
+   + Designziel Verlässlichkeit
+ + mit P-ouchDB kann der Entwicklungs-Stack um die komplette Backend-Komponente reduziert werden
+   + zu Pflegen ist dann nurnoch ein Frontend (HTML, CSS, Javascript, Jquery, backbone.js)
+ + alles freie Software! (nicht nur gratis, sondern auch "frei" für Weiterentwicklung)
 
 ** Vergleich
 
-*** Anwendungs-Schwerpunkt
-
 *** Ansatz
+
+ - modular und dokumentorientiert
+ - Datenstruktur = Layout
+   - die Struktur des Layouts muss der Struktur der Daten möglichst nahe gebracht werden
+     - die Daten können jedoch so angelegt werden, dass sie der Struktur des Layouts entsprechen
 
 *** Automatisierungsgrad
 
+Die Datenstruktur und die Tag-Struktur in Indesign müssen übereinstimmen, dann können die Daten mit einem Klick im Layout aktualisiert werden
+*Inline-Formatierung* ist ggf. über Adobe-Tags möglich
+
 *** Erweiterbarkeit
 
-*** Web-Ready
+ - *der Daten* : CouchDB wurde in Hinsicht auf die beliebige Erweiterbarkeit der Dokumente entworfen
+ - *der Infrastruktur* : Die eingesetzten Techniken und der modulare Ansatz gewähren eine einfache Weiterentwicklung des Content Management Systems
+
+*** Web-Anbindung
+
+ - CouchDB ist auf die nächste Generation von Webanwendungen ausgelegt
+  - "Web 3.0": Die Datenverarbeitung und -darstellung (Rendering von HTML usw.) verschiebt sich von der Server- auf die Clientenseite
+ -  CouchDB liefert die Daten direkt im JSON-Format und damit in der Sprache des Webs aus
+  - es ist keine zusätzliche Übersetzungsschicht SQL -> JSON nötig
+
+*** Indesign-Anbindung
+
+ - Das JSON-Format kann einfach in XML übersetzt werden
+ - Indesign importiert die Daten über eine XML-Datei
 
 *** Zukunftssicherheit
 
+ - *Print*: Auch künftige Indesign-Versionen werden den XML-Import unterstützen.
+   - Adobe verwendet selbst XML, um die Kompatibilität zwischen den Indesign-Versionen herzustellen
+ - *Web*: Dank des JSON-Formats und der HTTP-API können *alle gängigen
+   Frameworks* in *allen gängigen Skriptsprachen* verwendet werden
+   - Zend (PHP), Rails (Ruby), Express (Javascript), Django (Python)
+
 *** Betreuungsaufwand
+
+ - Die Datenbank muss gelegentlich komprimiert werden
+  - d.h. frühe Versionen der Dokumente werden gelöscht
+  - gelöschte Dokumente werden endgültig gelöscht
+ - Die Eingabemaske muss ggf. angepasst werden
 
 *** Offline-Nutzbarkeit
 
+ - ist über die Replikations-Funktion von CouchDB gewährleistet
+  - mit PouchDB lässt sich eine CouchDB im Browser abspeichern; die XML-Dateien können kopiert werden
+ - die Datenbank kann daher mit dem Browser mit nach Hause genommen werden,
+ - der höchste  Automatisierungsgrad (automatisches Update der Dateien im Verzeichnispfad der XML-Dateien) ist jedoch nur am Arbeitsplatz bzw. im Firmennetz möglich
 
+*** Kosten
+
+ - Arbeitszeit. Die Software ist vollständig frei.
 
 
 * Option 2: Die Plugin-Lösung
@@ -119,23 +160,60 @@ Indesign-Plugin oder Browser-Frontend -> MySQL -> Indesign
 #+REVEAL: split
  - MySQL ist eine freie und kostenlos zu beziehende Datenbank
  - SQL ist seit jahrzenten in Gebrauch
- - auf Basis von PHP oder Ruby existieren bereits viele Adapter und Skripts zum Umgang mit MySQL
+ - auf Basis der Skriptsprachen PHP oder Ruby existieren bereits solide Frameworks zum Umgang mit MySQL
 
 
 ** Vergleich
 
-*** Anwendungs-Schwerpunkt
-
 *** Ansatz
+ - integrativ und auf Relationen zwischen Tabellen orientiert
+   - über EasyCatalog können Daten ins Layout eingebunden und zugleich gepflegt werden
+   - alles integriert in Indesign
+ - Layout > Daten
+   - die Tabellen werden im Voraus so entworfen, dass mit ihnen möglichst alle erdenklichen Erfordernisse des Layouts abgedeckt sind
+   - Erweiterbarkeit erfordert die Verwendung mehrerer Tabellen. Insofern die Attribute eines Eintrags beliebig erweiterbar sein sollen, müssen mehrere Abfragen kombiniert werden.
 
 *** Automatisierungsgrad
 
+ - Mit dem "Paginationsmodul" lassen sich Tabellen im Indesign-Dokument automatisch erzeugen
+ - EasyCatalog bietet Inline-Formatierung
+   - Nachteil: Die Daten werden mit den Formatierungstags abgespeichert (ideal ist jedoch eine vollständige Trennung von Daten und Datendarstellung)
+
 *** Erweiterbarkeit
 
-*** Web-Ready
+ - *möglich*: mit dem "relational modul" lassen sich mehrere Abfragen kombinieren und so eine Erweiterbarkeit bei einem im Prinzip statischen Schema simulieren
+  - es gilt: Um so stärker zwischen Daten und Darstellung getrennt werden soll (und so eine gewisse Neutralität der Datenstruktur gegenüber ihrer Darstellung zu erreichen), um so teurer wird das Plugin-Paket
+
+*** Web-Anbindung
+
+ - baut auf gängigen Webtechniken auf
+    - PHP&MySQL haben das sogenannte Web 2.0 ermöglicht: Webseiten ändern sich dynamisch mit der Datenbank, die sie zur Darstellung bringen (allein auf der Serverseite!)
+  - der Trend in der Webentwicklung geht jedoch in die Richtung, dass die Darstellung in immer größerem Maß auf der Clientenseite erzeugt wird und der Server lediglich JSON-Daten liefert
 
 *** Zukunftssicherheit
 
+ - *Print*: die weitere Verwendung hängt an dem Bestehen des Plugin-Herstellers
+   - bei jedem Indesign-Update muss ein Update des Plugins geordert werden (dieses wird einige Wochen nach erscheinen der neuen CC-Version bereit gestellt)
+ - *Web*: es existieren in den Skriptsprachen PHP (Zend) und Ruby (Rails) solide Frameworks zum Betreiben von Seiten mit MySQL
+
 *** Betreuungsaufwand
 
+ - Update des Plugins bei einem Update der CC
+ - Bei nachträglichen Erweiterungen der Datenbank:
+  - das Schema muss ggf. per Hand erweitert werden (Administration des
+    MySQL-Servers ist im Vergleich zu der von NoSQL-Datenbanken voraussetzungsreich; ist jedoch Bestandteil vieler Ausbildungscurricula)
+  - die Eingabemaske muss ggf. an Veränderungen angepasst werden
+
 *** Offline-Nutzbarkeit
+
+ - *Ja*: EasyCatalog cached die Datenabfragen in einem lokalen Ordner.
+ - *und Nein*: Die Eingabe der Daten ist jedoch nur mit Verbindung zum MySQL-Server möglich.
+
+*** Kosten
+
+ - EC-Lite & ODBC-Modul: $498/Lizenz
+  - Nur eine Abfrage möglich -> unübersichtliches und nicht auf Erweiterbarkeit ausgelegtes Schema
+  - die Lösung mit EC-Lite lässt nur *entweder* eine Web- *oder* eine printkonforme Lösung zu
+ - EC & ODBC-Modul & relational Modul: $2095/Lizenz
+ - EC & ODBC-Modul & relational Modul & Paginationsmodul: $2694
+ - Arbeitszeit (Entwurf der Datenbank ist bei SQL-Datenbanken aufwändiger als bei NoSQL; dafür fällt hier der XML-Export der Daten weg)
