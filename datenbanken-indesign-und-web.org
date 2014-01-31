@@ -2,9 +2,9 @@
 
 * Aufgabe
 
-  * Es sollen die Daten von ihrer Darstellung getrennt werden
+  + Es sollen die Daten von ihrer Darstellung getrennt werden
     - ein und die selben Daten sollen im Web und im Prinkatalog dargestellt werden
-  * zentral ist daher die *Frage nach den Daten* und deren Struktur bzw. deren Format (als Tabelle oder als Aktenschrank)
+  + zentral ist daher die *Frage nach den Daten* und deren Struktur bzw. deren Format (als Tabelle oder als Aktenschrank)
 
 #+BEGIN_NOTES
 
@@ -14,6 +14,7 @@
 * Eine Form für die Daten
 (finden), die Anbindbarkeit an verschiedene Darstellungsformen gewährleistet
 
+  - zwei Datenbankmanagement-Systeme im Vergleich
 
 ** MySQL
 
@@ -61,27 +62,28 @@
 
 ** kurz skizziert
 
- Browser-Frontend (Backbone.js & PouchDB) -> CouchDB -> XML-Parser -> Dateisystem -> Indesign
+Browser-Frontend ([[http://backbonejs.org/][backbone.js]]) -> [[http://couchdb.apache.org/][CouchDB]] -> XML-Parser[[https://npmjs.org/package/jsontoxml][(bspw.)]] -> Dateisystem -> Indesign
+
 
 
 ** Warum CouchDB?
 
- + Schnittstelle: *HTTP*-Standart (für den Datenaustausch) und *JSON* (für das Format der ausgetauschten Daten)
-  - JSON: Datenformat; Abgeleitet aus Javascript, der Sprache der Browseranwendungen
-  - Abfragesprache: *Javascript*
-  - alles solide Webstandarts (Bestandteil vieler Ausbildungscurricula)
- + eigener Webserver für ein Browser-Frontends (ein Service weniger zu warten)
- + bei kleinen Katalogen ist Hardcoding der Datenbankdokumente sehr einfach (man muss bloß die einfache JSON-Notation beherrschen)
-   - d.h. die Datenbank lässt sich auch dann noch einfach bedienen, wenn die GUI wegfallen sollte (was bei MySQL-Tabellensammlung sehr umständlich ist)
+ + "CouchDB is built of the Web"
+   + Schnittstelle: *HTTP*-Standart (für den Datenaustausch) und *JSON* (für das Format der ausgetauschten Daten)
+     - JSON: Datenformat, abgeleitet aus Javascript (der Sprache der Browseranwendungen)
+     - Abfragesprache: *Javascript*
+     - alles solide Webstandarts (Bestandteil vieler
+       Ausbildungscurricula)
+ + Zum Hardcoding der Datenbank muss nur die JSON-Notation beherrscht werden
 #+REVEAL: split
 
- + dezentrale Verteilung der Daten
-  - *Dateikonsistenz-Problem*
- + *Lösung*: loggendes Dateisystem
-   + in Verbindung mit dem vorherigen Punkt verhält sich CouchDB wie
-     ein dezentrales Versionskontrollsystem
-     - GIT für Dokumente/Daten
-   + Designziel Verlässlichkeit
+ + Replikation: dezentrale Verteilung der Datenbank
+   - "master - master" oder "master -slave" Replikation
+   - einfach skalierbar (Cloud-Bildung), jedoch:
+   - *Dateikonsistenz-Problem*
+ + *Lösung*: Multiversion concurrency control (MVCC)
+   + dezentrales Versionskontrollsystem zur Herstellung von Datenkonsistenz
+   + loggendes Dateisystem: Designziel Verlässlichkeit
  + mit P-ouchDB kann der Entwicklungs-Stack um die komplette Backend-Komponente reduziert werden
    + zu Pflegen ist dann nurnoch ein Frontend (HTML, CSS, Javascript, Jquery, backbone.js)
  + alles freie Software! (nicht nur gratis, sondern auch "frei" für Weiterentwicklung)
@@ -92,7 +94,8 @@
 
  - modular und dokumentorientiert
  - Datenstruktur = Layout
-   - die Struktur des Layouts muss der Struktur der Daten möglichst nahe gebracht werden
+   - die Struktur des Layouts (Indesign-Tags) muss der Struktur der
+     Daten möglichst nahe gebracht werden
      - die Daten können jedoch so angelegt werden, dass sie der Struktur des Layouts entsprechen
 
 *** Automatisierungsgrad
@@ -148,7 +151,7 @@ Die Datenstruktur und die Tag-Struktur in Indesign müssen übereinstimmen, dann
 
 ** kurz skizziert
 
-Indesign-Plugin oder Browser-Frontend -> MySQL -> Indesign
+Indesign-Plugin oder Browser-Frontend -> MySQL -> Indesign-Plugin -> Indesign
 
 ** Warum Easy Catalog und MySQL
 
@@ -159,8 +162,8 @@ Indesign-Plugin oder Browser-Frontend -> MySQL -> Indesign
    - vorausgesetzt, man ist bereit in das volle Paket zu investieren
 #+REVEAL: split
  - MySQL ist eine freie und kostenlos zu beziehende Datenbank
- - SQL ist seit jahrzenten in Gebrauch
- - auf Basis der Skriptsprachen PHP oder Ruby existieren bereits solide Frameworks zum Umgang mit MySQL
+ - SQL ist seit jahrzehnten in Gebrauch
+ - auf Basis der Skriptsprachen PHP, Ruby oder Python existieren bereits solide Frameworks zum Umgang mit MySQL
 
 
 ** Vergleich

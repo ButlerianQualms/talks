@@ -15,8 +15,7 @@
 <div class="slides">
 <section>
 <h1>datenbanken-indesign-und-web</h1>
-<h2>cb</h2>
-<h2><a href="mailto:cb@deus">cb@deus</a></h2>
+<h2><a href="mailto:cbernhardt@link-gmbh.com">cbernhardt@link-gmbh.com</a></h2>
 <h2></h2></section>
 <section>
 <h2>Table of Contents</h2><ul>
@@ -158,6 +157,10 @@
 (finden), die Anbindbarkeit an verschiedene Darstellungsformen gewährleistet
 </p>
 
+<ul class="org-ul">
+<li>zwei Datenbankmanagement-Systeme im Vergleich
+</li>
+</ul>
 
 </section>
 <section id="sec-2-1" >
@@ -273,53 +276,52 @@
 
 <h3><span class="section-number-3">3.1</span> kurz skizziert</h3>
 <p>
-Browser-Frontend (Backbone.js &amp; PouchDB) -&gt; CouchDB -&gt; XML-Parser -&gt; Dateisystem -&gt; Indesign
+Browser-Frontend (<a href="http://backbonejs.org/">backbone.js</a>) -&gt; <a href="http://couchdb.apache.org/">CouchDB</a> -&gt; XML-Parser<a href="https://npmjs.org/package/jsontoxml">(bspw.)</a> -&gt; Dateisystem -&gt; Indesign
 </p>
+
 
 </section>
 <section id="sec-3-2" >
 
 <h3><span class="section-number-3">3.2</span> Warum CouchDB?</h3>
 <ul class="org-ul">
+<li>"CouchDB is built of the Web"
+<ul class="org-ul">
 <li>Schnittstelle: <b>HTTP</b>-Standart (für den Datenaustausch) und <b>JSON</b> (für das Format der ausgetauschten Daten)
 <ul class="org-ul">
-<li>JSON: Datenformat; Abgeleitet aus Javascript, der Sprache der Browseranwendungen
+<li>JSON: Datenformat, abgeleitet aus Javascript (der Sprache der Browseranwendungen)
 </li>
 <li>Abfragesprache: <b>Javascript</b>
 </li>
-<li>alles solide Webstandarts (Bestandteil vieler Ausbildungscurricula)
+<li>alles solide Webstandarts (Bestandteil vieler
+Ausbildungscurricula)
 </li>
 </ul>
 </li>
-<li>eigener Webserver für ein Browser-Frontends (ein Service weniger zu warten)
-</li>
-<li>bei kleinen Katalogen ist Hardcoding der Datenbankdokumente sehr einfach (man muss bloß die einfache JSON-Notation beherrschen)
-<ul class="org-ul">
-<li>d.h. die Datenbank lässt sich auch dann noch einfach bedienen, wenn die GUI wegfallen sollte (was bei MySQL-Tabellensammlung sehr umständlich ist)
-</li>
 </ul>
+</li>
+<li>Zum Hardcoding der Datenbank muss nur die JSON-Notation beherrscht werden
 </li>
 </ul>
 </section>
 <section>
 
 <ul class="org-ul">
-<li>dezentrale Verteilung der Daten
+<li>Replikation: dezentrale Verteilung der Datenbank
 <ul class="org-ul">
+<li>"master - master" oder "master -slave" Replikation
+</li>
+<li>einfach skalierbar (Cloud-Bildung), jedoch:
+</li>
 <li><b>Dateikonsistenz-Problem</b>
 </li>
 </ul>
 </li>
-<li><b>Lösung</b>: loggendes Dateisystem
+<li><b>Lösung</b>: Multiversion concurrency control (MVCC)
 <ul class="org-ul">
-<li>in Verbindung mit dem vorherigen Punkt verhält sich CouchDB wie
-ein dezentrales Versionskontrollsystem
-<ul class="org-ul">
-<li>GIT für Dokumente/Daten
+<li>dezentrales Versionskontrollsystem zur Herstellung von Datenkonsistenz
 </li>
-</ul>
-</li>
-<li>Designziel Verlässlichkeit
+<li>loggendes Dateisystem: Designziel Verlässlichkeit
 </li>
 </ul>
 </li>
@@ -345,7 +347,8 @@ ein dezentrales Versionskontrollsystem
 </li>
 <li>Datenstruktur = Layout
 <ul class="org-ul">
-<li>die Struktur des Layouts muss der Struktur der Daten möglichst nahe gebracht werden
+<li>die Struktur des Layouts (Indesign-Tags) muss der Struktur der
+Daten möglichst nahe gebracht werden
 <ul class="org-ul">
 <li>die Daten können jedoch so angelegt werden, dass sie der Struktur des Layouts entsprechen
 </li>
@@ -471,7 +474,7 @@ Frameworks</b> in <b>allen gängigen Skriptsprachen</b> verwendet werden
 
 <h3><span class="section-number-3">4.1</span> kurz skizziert</h3>
 <p>
-Indesign-Plugin oder Browser-Frontend -&gt; MySQL -&gt; Indesign
+Indesign-Plugin oder Browser-Frontend -&gt; MySQL -&gt; Indesign-Plugin -&gt; Indesign
 </p>
 </section>
 <section id="sec-4-2" >
@@ -496,9 +499,9 @@ Indesign-Plugin oder Browser-Frontend -&gt; MySQL -&gt; Indesign
 <ul class="org-ul">
 <li>MySQL ist eine freie und kostenlos zu beziehende Datenbank
 </li>
-<li>SQL ist seit jahrzenten in Gebrauch
+<li>SQL ist seit jahrzehnten in Gebrauch
 </li>
-<li>auf Basis der Skriptsprachen PHP oder Ruby existieren bereits solide Frameworks zum Umgang mit MySQL
+<li>auf Basis der Skriptsprachen PHP, Ruby oder Python existieren bereits solide Frameworks zum Umgang mit MySQL
 </li>
 </ul>
 
